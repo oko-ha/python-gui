@@ -13,8 +13,8 @@ def calc(a, b, c, d, j):
     i = a + c + h
     k = g * j * 0.072
     l = g + k
-    m = (g * 12 * 5)/(k * 12)
-    n = 68 + m
+    m = (g * 12 * j)/(k * 12)
+    n = 63 + j + m
 
     txt_e.configure(state='normal')
     txt_f.configure(state='normal')
@@ -73,7 +73,40 @@ def start():
     except:
         msgbox.showerror("Error", "숫자를 입력하세요.")
 
-    
+def init():
+    txt_e.configure(state='normal')
+    txt_f.configure(state='normal')
+    txt_g.configure(state='normal')
+    txt_h.configure(state='normal')
+    txt_i.configure(state='normal')
+    txt_k.configure(state='normal')
+    txt_l.configure(state='normal')
+    txt_m.configure(state='normal')
+    txt_n.configure(state='normal')
+    txt_a.delete(0,"end")
+    txt_b.delete(0,"end")
+    txt_c.delete(0,"end")
+    txt_d.delete(0,"end")
+    txt_j.delete(0,"end")
+    txt_e.delete(0,"end")
+    txt_f.delete(0,"end")
+    txt_g.delete(0,"end")
+    txt_h.delete(0,"end")
+    txt_i.delete(0,"end")
+    txt_k.delete(0,"end")
+    txt_l.delete(0,"end")
+    txt_m.delete(0,"end")
+    txt_n.delete(0,"end")
+    txt_e.configure(state='readonly')
+    txt_f.configure(state='readonly')
+    txt_g.configure(state='readonly')
+    txt_h.configure(state='readonly')
+    txt_i.configure(state='readonly')
+    txt_k.configure(state='readonly')
+    txt_l.configure(state='readonly')
+    txt_m.configure(state='readonly')
+    txt_n.configure(state='readonly')
+    txt_a.focus()
     
 
 # 추가납부 프레임
@@ -90,7 +123,8 @@ lbl_a_2 = Label(frame_a, text="   세")
 lbl_a_2.pack(side="right", padx=5, pady=5)
 
 txt_a = Entry(frame_a, bg = 'light blue', width=10)
-txt_a.pack(side="right", padx=5, ipady=4)
+txt_a.pack(side="right", padx=5, ipady=4, anchor='e')
+txt_a.focus()
 
 frame_b = LabelFrame(frame_add)
 frame_b.pack(padx=5, pady=5, ipady=5, fill="both")
@@ -157,13 +191,13 @@ txt_f.pack(side="right", padx=5, ipady=4)
 frame_g = LabelFrame(frame_add)
 frame_g.pack(padx=5, pady=5, ipady=5, fill="both")
 
-lbl_g_1 = Label(frame_g, text="나의 연금액 (a + b)")
+lbl_g_1 = Label(frame_g, text="나의 연금액 (a + b)", fg='blue')
 lbl_g_1.pack(side="left", padx=5, pady=5)
 
 lbl_g_2 = Label(frame_g, text="만원")
 lbl_g_2.pack(side="right", padx=5, pady=5)
 
-txt_g = Entry(frame_g, width=10)
+txt_g = Entry(frame_g, width=10, fg='blue')
 txt_g.configure(state='disabled')
 txt_g.pack(side="right", padx=5, ipady=4)
 
@@ -183,13 +217,13 @@ txt_h.pack(side="right", padx=5, ipady=4)
 frame_i = LabelFrame(frame_add)
 frame_i.pack(padx=5, pady=5, ipady=5, fill="both")
 
-lbl_i_1 = Label(frame_i, text="추가 납부의 손익 분기점")
+lbl_i_1 = Label(frame_i, text="추가 납부의 손익 분기점", fg='blue')
 lbl_i_1.pack(side="left", padx=5, pady=5)
 
 lbl_i_2 = Label(frame_i, text="   세")
 lbl_i_2.pack(side="right", padx=5, pady=5)
 
-txt_i = Entry(frame_i, width=10)
+txt_i = Entry(frame_i, width=10, fg='blue')
 txt_i.configure(state='disabled')
 txt_i.pack(side="right", padx=5, ipady=4)
 
@@ -226,13 +260,13 @@ txt_k.pack(side="right", padx=5, ipady=4)
 frame_l = LabelFrame(frame_delay)
 frame_l.pack(padx=5, pady=5, ipady=5, fill="both")
 
-lbl_l_1 = Label(frame_l, text="나의 연금액")
+lbl_l_1 = Label(frame_l, text="나의 연금액", fg='blue')
 lbl_l_1.pack(side="left", padx=5, pady=5)
 
 lbl_l_2 = Label(frame_l, text="만원")
 lbl_l_2.pack(side="right", padx=5, pady=5)
 
-txt_l = Entry(frame_l, width=10)
+txt_l = Entry(frame_l, width=10, fg='blue')
 txt_l.configure(state='disabled')
 txt_l.pack(side="right", padx=5, ipady=4)
 
@@ -252,13 +286,13 @@ txt_m.pack(side="right", padx=5, ipady=4)
 frame_n = LabelFrame(frame_delay)
 frame_n.pack(padx=5, pady=5, ipady=5, fill="both")
 
-lbl_n_1 = Label(frame_n, text="수령 연금의 손익 분기점")
+lbl_n_1 = Label(frame_n, text="수령 연금의 손익 분기점", fg='blue')
 lbl_n_1.pack(side="left", padx=5, pady=5)
 
 lbl_n_2 = Label(frame_n, text="   세")
 lbl_n_2.pack(side="right", padx=5, pady=5)
 
-txt_n = Entry(frame_n, width=10)
+txt_n = Entry(frame_n, width=10, fg='blue')
 txt_n.configure(state='disabled')
 txt_n.pack(side="right", padx=5, ipady=4)
 
@@ -266,10 +300,14 @@ txt_n.pack(side="right", padx=5, ipady=4)
 frame_run = Frame(root)
 frame_run.pack(side="bottom", fill="x", padx=5, pady=5)
 
-btn_close = Button(frame_run, padx=5, pady=5, text="닫기", width=12, command=root.quit)
+btn_close = Button(frame_run, padx=5, pady=5, text="닫기", width=10, command=root.quit)
 btn_close.pack(side="right", padx=5, pady=5)
 
-btn_start = Button(frame_run, padx=5, pady=5, text="년금 계산", width=12, command=start)
+btn_start = Button(frame_run, padx=5, pady=5, text="년금 계산", width=10, command=start)
+btn_start.pack(side="right", padx=5, pady=5)
+
+
+btn_start = Button(frame_run, padx=5, pady=5, text="초기화", width=10, command=init)
 btn_start.pack(side="right", padx=5, pady=5)
 
 root.resizable(False, False)
